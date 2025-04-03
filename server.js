@@ -35,21 +35,21 @@ const server = http.createServer(function(req, res) {
     console.log(choice)
     if('student' in params){
       console.log(params['student'])
-      if((params['student'].toLowerCase() === 'heads' && choice === 0) || (params['student'].toLowerCase() === 'tails' && choice === 1)) {
+      if (params['student'] === params['student'].toLowerCase().split("").reverse().join("")) {
         res.writeHead(200, {'Content-Type': 'application/json'});
         const objToJson = {
-          name: `You chose ${params['student']}`,
-          status: "You win!",
+          name: `Your word is ${params['student']}`,
+          status: "This is a palindrome!",
           currentOccupation: "test"
         }
         res.end(JSON.stringify(objToJson));
       }//student = leon
       
-      else if(params['student'] != 'leon'){
+      else if (params['student'] != 'leon'){
         res.writeHead(200, {'Content-Type': 'application/json'});
         const objToJson = {
-          name: `You chose ${params['student']}`,
-          status: "You lose!",
+          name: `Your word is ${params['student']}`,
+          status: "This is not a palindrome...",
           currentOccupation: "test two"
         }
         res.end(JSON.stringify(objToJson));
