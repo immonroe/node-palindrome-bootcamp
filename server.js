@@ -35,7 +35,8 @@ const server = http.createServer(function(req, res) {
     console.log(choice)
     if('student' in params){
       console.log(params['student'])
-      if (params['student'] === params['student'].toLowerCase().split("").reverse().join("")) {
+      let stuff = params['student'].toLowerCase().split(" ").join("")
+      if (stuff === stuff.split("").reverse().join("")) {
         res.writeHead(200, {'Content-Type': 'application/json'});
         const objToJson = {
           name: `Your word is ${params['student']}`,
